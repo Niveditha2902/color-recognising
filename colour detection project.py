@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import pandas as pd
-img=cv2.imread('flower.jpg')
+img=cv2.imread('COLORS/flower.jpg')
 clicked=False
 r=g=b=xpos=ypos=0
 index=["color","color_name","hex","R","G","B"]
