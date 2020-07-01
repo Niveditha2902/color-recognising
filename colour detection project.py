@@ -5,7 +5,7 @@ img=cv2.imread('COLORS/flower.jpg')
 clicked=False
 r=g=b=xpos=ypos=0
 index=["color","color_name","hex","R","G","B"]
-csv = pd.read_csv('colors.csv', names=index, header=None)
+csv = pd.read_csv('colors.csv', names=icolors.csvndex, header=None)
 def getColorname(R,G,B):
     minimum = 10000
     for i in range(len(csv)):
