@@ -9,7 +9,7 @@ r=g=b=xpos=ypos=0
 index=["color","color_name","hex","R","G","B"]
 csv = pd.read_csv('colors.csv', names=icolors.csvndex, header=None)
 #d = abs(Red – ithRedColor) + (Green – ithGreenColor) + (Blue – ithBlueColor)
-def getColorname(R,G,B):
+def getColorName(R,G,B):
     minimum = 10000
     for i in range(len(csv)):
         d = abs(R- int(csv.loc[i,"R"])) + abs(G- int(csv.loc[i,"G"]))+ abs(B- int(csv.loc[i,"B"]))
@@ -35,7 +35,7 @@ while(1):
     cv2.imshow("Colorimage",img)
     if (clicked):
         cv2.rectangle(img,(20,20), (750,60), (b,g,r), -1)
-        text = getColorname(r,g,b) + ' R='+ str(r) + ' G='+ str(g) + ' B='+ str(b)
+        text = getColorName(r,g,b) + ' R='+ str(r) + ' G='+ str(g) + ' B='+ str(b)
         cv2.putText(img, text,(50,50),2,0.8,(255,255,255),2,cv2.LINE_AA)
         if(r+g+b>=600):
             cv2.putText(img, text,(50,50),2,0.8,(0,0,0),2,cv2.LINE_AA)
