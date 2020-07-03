@@ -1,11 +1,14 @@
+#Importing the python packages
 import cv2
 import numpy as np
 import pandas as pd
+#Reading the image either by file loacation path or name of the file
 img=cv2.imread('COLORS/flower.jpg')
 clicked=False
 r=g=b=xpos=ypos=0
 index=["color","color_name","hex","R","G","B"]
 csv = pd.read_csv('colors.csv', names=icolors.csvndex, header=None)
+#d = abs(Red – ithRedColor) + (Green – ithGreenColor) + (Blue – ithBlueColor)
 def getColorname(R,G,B):
     minimum = 10000
     for i in range(len(csv)):
@@ -14,6 +17,7 @@ def getColorname(R,G,B):
             minimum = d
             cname = csv.loc[i,"color_name"]
     return cname
+#parameters have the event name, (x,y) coordinates of the mouse position
 def draw_function(event, x,y,flags,param):
     if event == cv2.EVENT_LBUTTONDBLCLK:
         global b,g,r,xpos,ypos, clicked
@@ -26,6 +30,7 @@ def draw_function(event, x,y,flags,param):
         r = int(r)
 cv2.namedWindow('Colorimage')
 cv2.setMouseCallback('Colorimage',draw_function)
+#Using the cv2.imshow() function, we draw the image on the window.
 while(1):
     cv2.imshow("Colorimage",img)
     if (clicked):
@@ -35,6 +40,8 @@ while(1):
         if(r+g+b>=600):
             cv2.putText(img, text,(50,50),2,0.8,(0,0,0),2,cv2.LINE_AA)
         clicked=False
+#Break the loop when user hits 'esc' key 
+
     if cv2.waitKey(20) & 0xFF ==27:
         break
 cv2.destroyAllWindows()
